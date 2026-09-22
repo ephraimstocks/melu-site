@@ -1085,6 +1085,20 @@
       });
     });
 
+    // Reels: play while on screen, pause when scrolled away (autoplay fallback for strict browsers)
+    var reelVideos = document.querySelectorAll('.reel video');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          var v = en.target;
+          if (en.isIntersecting) { v.play().catch(function () {}); } else { v.pause(); }
+        });
+      }, { threshold: 0.25 });
+      reelVideos.forEach(function (v) { io.observe(v); });
+    } else {
+      reelVideos.forEach(function (v) { v.play().catch(function () {}); });
+    }
+
     // Reels: tap the speaker to unmute one at a time
     document.querySelectorAll('.reel .sound').forEach(function (btn) {
       btn.addEventListener('click', function () {
