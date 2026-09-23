@@ -778,6 +778,10 @@
   .reel.unmuted .sound .off { display: none; }
   .reel.unmuted .sound .on { display: block; }
   .reel .tag { position: absolute; top: 12px; left: 12px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; padding: 6px 10px; border-radius: var(--radius); border: 1px solid rgba(242,240,235,.3); background: rgba(10,10,10,.45); color: var(--ink); }
+  .reel-card { display: grid; gap: 12px; margin: 0; }
+  .reel-cap { display: grid; gap: 3px; padding: 0 2px; }
+  .reel-client { font-size: 15px; letter-spacing: -0.01em; color: var(--ink); }
+  .reel-note { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
   .work-grid { display: grid; gap: clamp(28px, 4vw, 52px); }
   .work-copy { display: grid; gap: 20px; }
   .work-copy h2 { font-size: clamp(38px, 5vw, 68px); margin-top: 18px; }
@@ -929,30 +933,48 @@
           <a class="btn" href="https://www.instagram.com/melu.media/" target="_blank" rel="noopener">See more on Instagram</a>
         </div>
         <div class="reels">
-          <div class="reel" id="reel-1">
-            <video src="reel-kitchen.mp4" poster="reel-kitchen.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Chef cooking in a wok, restaurant kitchen reel"></video>
-            <span class="tag">Reel</span>
-            <button class="sound" type="button" aria-label="Unmute video" data-reel="reel-1">
-              <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg>
-              <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5.5a10 10 0 0 1 0 13"/></svg>
-            </button>
-          </div>
-          <div class="reel" id="reel-2">
-            <video src="reel-plating.mp4" poster="reel-plating.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Plated Thai dishes, restaurant reel"></video>
-            <span class="tag">Reel</span>
-            <button class="sound" type="button" aria-label="Unmute video" data-reel="reel-2">
-              <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg>
-              <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5.5a10 10 0 0 1 0 13"/></svg>
-            </button>
-          </div>
-          <div class="reel" id="reel-3">
-            <video src="reel-party.mp4" poster="reel-party.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Presenter in front of a Party Warehouse delivery truck, Blenheim promo reel"></video>
-            <span class="tag">Reel</span>
-            <button class="sound" type="button" aria-label="Unmute video" data-reel="reel-3">
-              <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg>
-              <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5.5a10 10 0 0 1 0 13"/></svg>
-            </button>
-          </div>
+          <figure class="reel-card">
+            <div class="reel" id="reel-1">
+              <video src="reel-kitchen.mp4" poster="reel-kitchen.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Chef cooking in a wok, restaurant kitchen reel"></video>
+              <span class="tag">Reel</span>
+              <button class="sound" type="button" aria-label="Unmute video" data-reel="reel-1">
+                <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg>
+                <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5.5a10 10 0 0 1 0 13"/></svg>
+              </button>
+            </div>
+            <figcaption class="reel-cap">
+              <span class="reel-client">Thai restaurant</span>
+              <span class="reel-note">Christchurch · Kitchen reel</span>
+            </figcaption>
+          </figure>
+          <figure class="reel-card">
+            <div class="reel" id="reel-2">
+              <video src="reel-plating.mp4" poster="reel-plating.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Plated Thai dishes, restaurant reel"></video>
+              <span class="tag">Reel</span>
+              <button class="sound" type="button" aria-label="Unmute video" data-reel="reel-2">
+                <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg>
+                <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5.5a10 10 0 0 1 0 13"/></svg>
+              </button>
+            </div>
+            <figcaption class="reel-cap">
+              <span class="reel-client">Thai restaurant</span>
+              <span class="reel-note">Christchurch · Plated-dish reel</span>
+            </figcaption>
+          </figure>
+          <figure class="reel-card">
+            <div class="reel" id="reel-3">
+              <video src="reel-party.mp4" poster="reel-party.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Presenter in front of a Party Warehouse delivery truck, Blenheim promo reel"></video>
+              <span class="tag">Reel</span>
+              <button class="sound" type="button" aria-label="Unmute video" data-reel="reel-3">
+                <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg>
+                <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5.5a10 10 0 0 1 0 13"/></svg>
+              </button>
+            </div>
+            <figcaption class="reel-cap">
+              <span class="reel-client">Party Warehouse</span>
+              <span class="reel-note">Blenheim · Brand promo reel</span>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </div>
