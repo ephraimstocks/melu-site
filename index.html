@@ -768,7 +768,7 @@
   @media (max-width: 640px) { .services { grid-template-columns: 1fr; } }
 
   /* ---------- Work ---------- */
-  .reels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 3vw, 40px); max-width: 760px; }
+  .reels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2.4vw, 28px); max-width: 100%; }
   .reel { position: relative; aspect-ratio: 9 / 16; max-width: 100%; border-radius: 18px; overflow: hidden; border: 1px solid var(--line-strong); background: var(--surface); box-shadow: 0 30px 60px -30px rgba(0,0,0,.9); }
   .reel video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
   .reel .sound { position: absolute; right: 12px; bottom: 12px; width: 40px; height: 40px; border-radius: 999px; border: 1px solid rgba(242,240,235,.5); background: rgba(10,10,10,.55); color: var(--ink); display: grid; place-items: center; cursor: pointer; padding: 0; transition: background .25s ease; }
@@ -778,12 +778,12 @@
   .reel.unmuted .sound .off { display: none; }
   .reel.unmuted .sound .on { display: block; }
   .reel .tag { position: absolute; top: 12px; left: 12px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; padding: 6px 10px; border-radius: var(--radius); border: 1px solid rgba(242,240,235,.3); background: rgba(10,10,10,.45); color: var(--ink); }
-  .work-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 4vw, 64px); align-items: center; }
+  .work-grid { display: grid; gap: clamp(28px, 4vw, 52px); }
   .work-copy { display: grid; gap: 20px; }
   .work-copy h2 { font-size: clamp(38px, 5vw, 68px); margin-top: 18px; }
   .work-copy p { color: var(--ink-2); max-width: 40ch; }
   .work-copy .btn { justify-self: start; }
-  @media (max-width: 900px) { .work-grid { grid-template-columns: 1fr; } .reels { max-width: 100%; } }
+  @media (max-width: 620px) { .reels { grid-template-columns: 1fr; max-width: 340px; margin-inline: auto; } }
   @media (max-width: 480px) { .reels { gap: 12px; } .reel { border-radius: 12px; } }
 
   /* ---------- Responsive ---------- */
@@ -923,9 +923,9 @@
         <div class="work-copy">
           <div>
             <span class="eyebrow">Recent work</span>
-            <h2 class="display" id="work-h">Shot in the kitchen, <em>not</em> a studio.</h2>
+            <h2 class="display" id="work-h">Shot on location, <em>not</em> in a studio.</h2>
           </div>
-          <p>Content for a Thai restaurant in Christchurch — filmed on a normal service, cut for Instagram and TikTok.</p>
+          <p>Content for real businesses — filmed where the work actually happens, cut for Instagram and TikTok.</p>
           <a class="btn" href="https://www.instagram.com/melu.media/" target="_blank" rel="noopener">See more on Instagram</a>
         </div>
         <div class="reels">
@@ -941,6 +941,14 @@
             <video src="reel-plating.mp4" poster="reel-plating.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Plated Thai dishes, restaurant reel"></video>
             <span class="tag">Reel</span>
             <button class="sound" type="button" aria-label="Unmute video" data-reel="reel-2">
+              <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg>
+              <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5.5a10 10 0 0 1 0 13"/></svg>
+            </button>
+          </div>
+          <div class="reel" id="reel-3">
+            <video src="reel-party.mp4" poster="reel-party.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Presenter in front of a Party Warehouse delivery truck, Blenheim promo reel"></video>
+            <span class="tag">Reel</span>
+            <button class="sound" type="button" aria-label="Unmute video" data-reel="reel-3">
               <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg>
               <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5.5a10 10 0 0 1 0 13"/></svg>
             </button>
