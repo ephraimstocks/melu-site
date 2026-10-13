@@ -296,7 +296,10 @@
             <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="e-name"><span class="err" id="e-name">Please enter your name.</span></div>
             <div class="field"><label for="f-business">Business name</label><input id="f-business" name="business" type="text" autocomplete="organization" required aria-describedby="e-business"><span class="err" id="e-business">Please enter your business name.</span></div>
           </div>
-          <div class="field"><label for="f-email">Email address</label><input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="e-email"><span class="err" id="e-email">Please enter a valid email address.</span></div>
+          <div class="two">
+            <div class="field"><label for="f-email">Email address</label><input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="e-email"><span class="err" id="e-email">Please enter a valid email address.</span></div>
+            <div class="field"><label for="f-phone">Phone <span class="opt">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="e-phone"><span class="err" id="e-phone">Please enter a valid phone number, or leave it blank.</span></div>
+          </div>
           <fieldset class="field">
             <legend>What are you looking for? <span class="opt">(optional)</span></legend>
             <div class="chips">
@@ -375,7 +378,8 @@
     var checks = [
       { id: 'f-name', ok: function (v) { return v.length > 0; } },
       { id: 'f-business', ok: function (v) { return v.length > 0; } },
-      { id: 'f-email', ok: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); } }
+      { id: 'f-email', ok: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); } },
+      { id: 'f-phone', ok: function (v) { return v === '' || (/^[0-9+() -]+$/.test(v) && v.replace(/\D/g, '').length >= 7); } }
     ];
     function mark(input, valid) {
       input.closest('.field').classList.toggle('invalid', !valid);
@@ -424,6 +428,7 @@
           name: name,
           business: business,
           email: form.elements['email'].value.trim(),
+          phone: form.elements['phone'].value.trim() || 'Not given',
           looking_for: interests.length ? interests.join(', ') : 'Not specified',
           message: form.elements['message'].value.trim() || '(no message)'
         })
