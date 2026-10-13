@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://melu.co.nz/sitemap.xml
