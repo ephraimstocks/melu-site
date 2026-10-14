@@ -3,6 +3,22 @@
   if (year) year.textContent = new Date().getFullYear();
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Remember, for this visit only, where the visitor arrived from and which pages they
+  // viewed, so an enquiry email can say what brought them here. Nothing leaves the
+  // browser unless they send the form.
+  var journey = { landing: '', referrer: '', pages: '' };
+  try {
+    var store = window.sessionStorage;
+    if (!store.getItem('melu_landing')) {
+      store.setItem('melu_landing', location.pathname + location.search);
+      store.setItem('melu_referrer', document.referrer || 'Direct or unknown');
+    }
+    var seen = (store.getItem('melu_pages') || '').split(' > ').filter(Boolean);
+    if (seen[seen.length - 1] !== location.pathname) seen.push(location.pathname);
+    store.setItem('melu_pages', seen.slice(-12).join(' > '));
+    journey = { landing: store.getItem('melu_landing'), referrer: store.getItem('melu_referrer'), pages: store.getItem('melu_pages') };
+  } catch (e) {}
+
   // Mobile menu: moves focus in, keeps it there, and hands it back on close
   var menu = document.getElementById('mobile-menu');
   var openBtn = document.getElementById('menu-open');
@@ -90,12 +106,16 @@
           email: form.elements['email'].value.trim(),
           phone: form.elements['phone'].value.trim() || 'Not given',
           looking_for: interests.length ? interests.join(', ') : 'Not specified',
-          message: form.elements['message'].value.trim() || '(no message)'
+          message: form.elements['message'].value.trim() || '(no message)',
+          landing_page: journey.landing || 'Not recorded',
+          referred_by: journey.referrer || 'Not recorded',
+          pages_viewed: journey.pages || 'Not recorded'
         })
       }).then(function (r) { return r.json(); }).then(function (data) {
         if (!data || !data.success) throw new Error('rejected');
         form.reset();
         showStatus(false, 'Sent. Thanks ' + name.split(' ')[0] + ", we'll be in touch within two working days.");
+        window.location.assign('/thanks');
       }).catch(function () {
         showStatus(true, "That didn't send. Please email us at ");
       }).finally(function () {
@@ -117,6 +137,9 @@
     var name = reel.getAttribute('data-name');
     video.removeAttribute('controls');
     video.muted = true;
+    // Phones get a smaller file; nothing downloads until the video plays.
+    var small = video.getAttribute('data-small');
+    if (small && window.matchMedia('(max-width: 700px)').matches) video.setAttribute('src', small);
     function sync() {
       var playing = !video.paused;
       reel.classList.toggle('playing', playing);

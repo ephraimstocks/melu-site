@@ -93,9 +93,8 @@ p { margin: 0; text-wrap: pretty; }
 .display em {
   font-style: normal;
   font-weight: 400;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--ink);
-  text-stroke: 1px var(--ink);
+  color: oklch(0.17 0.01 78 / 0.1);
+  -webkit-text-stroke: clamp(1.25px, 0.024em, 2.2px) var(--ink);
 }
 .lede { color: var(--ink-2); font-size: clamp(17px, 1.4vw, 20px); max-width: 60ch; margin: 0; }
 
@@ -311,6 +310,7 @@ p { margin: 0; text-wrap: pretty; }
 .cta-big { display: grid; gap: 30px; justify-items: center; text-align: center; padding-block: clamp(36px, 6vw, 90px); }
 .cta-big .display { font-size: clamp(44px, 9vw, 96px); }
 .cta-big p { color: var(--ink-2); max-width: 46ch; }
+.cta-big p a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
 .more-services { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 14px; }
 .more-label { margin-right: 10px; font-size: 14.5px; color: var(--muted); }
 
@@ -451,5 +451,5 @@ footer .fine a { text-decoration: underline; text-underline-offset: 3px; padding
   .hero-actions .btn, .form-foot .btn { width: 100%; justify-content: center; }
 }
 @media (max-width: 420px) {
-  .hero h1:not(.eyebrow) { font-size: 10.4vw; }
+  .hero .hero-h { font-size: 10.4vw; }
 }
