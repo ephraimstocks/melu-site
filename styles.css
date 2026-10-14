@@ -332,6 +332,10 @@ p { margin: 0; text-wrap: pretty; }
 @media (prefers-reduced-motion: reduce) { .faq-icon::before, .faq-icon::after, .svc-arrow { transition: none; } }
 footer .fine span a { text-decoration: none; }
 
+.trades-copy { display: grid; gap: 20px; align-content: start; }
+.trades-copy p:not(.lede) { color: var(--ink-2); max-width: 46ch; }
+.trades-copy .btn { justify-self: start; margin-top: 4px; }
+
 /* About */
 .statement { padding-block: clamp(44px, 6vw, 80px); border-bottom: 1px solid var(--line); position: relative; }
 .statement .wrap { position: relative; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 32px; align-items: end; }
