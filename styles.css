@@ -239,7 +239,7 @@ p { margin: 0; text-wrap: pretty; }
   position: relative;
   padding-block: clamp(40px, 6vw, 80px);
 }
-.hero-copy { display: grid; gap: 28px; max-width: 980px; }
+.hero-copy { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; max-width: 980px; }
 .hero h1, .hero .hero-h { font-size: clamp(44px, 7.2vw, 96px); }
 .hero h1.eyebrow { font-size: 12px; }
 .hero .lede { max-width: 52ch; }
@@ -444,8 +444,12 @@ footer .fine a { text-decoration: underline; text-underline-offset: 3px; padding
 }
 @media (max-width: 640px) {
   body { font-size: 16px; }
+  .btn { white-space: normal; text-align: center; }
   .services { grid-template-columns: 1fr; }
   .svc { padding: 28px 20px 32px; }
   .two { grid-template-columns: 1fr; }
   .hero-actions .btn, .form-foot .btn { width: 100%; justify-content: center; }
+}
+@media (max-width: 420px) {
+  .hero h1:not(.eyebrow) { font-size: 10.4vw; }
 }
