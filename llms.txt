@@ -1,6 +1,6 @@
 # Melu Media
 
-> Melu Media is a marketing company based in Ōtautahi Christchurch, New Zealand. It films short-form video, manages Instagram and Facebook for businesses, runs Meta (Facebook and Instagram) ad campaigns and provides marketing strategy. It works with businesses in Christchurch and the wider Canterbury region, and elsewhere in New Zealand.
+> Melu Media is a marketing company based in Ōtautahi Christchurch, New Zealand. It films short-form video, manages Instagram and Facebook for businesses, runs Meta (Facebook and Instagram) ad campaigns, builds websites and provides marketing strategy. It works with businesses in Christchurch and the wider Canterbury region, and elsewhere in New Zealand.
 
 Tagline: Your business. Our creative. More attention.
 
@@ -9,15 +9,19 @@ Tagline: Your business. Our creative. More attention.
 - [Short-form video production](https://melu.co.nz/short-form-video): Reels and promotional videos planned, filmed on location at the client's business and edited for Instagram and Facebook.
 - [Social media marketing and management](https://melu.co.nz/social-media-marketing): Content planning, shoot days, reels, photo posts and stories, scheduling and posting to Instagram and Facebook.
 - [Meta ads management](https://melu.co.nz/meta-ads): Targeted Facebook and Instagram campaigns set up and managed in Meta Ads Manager.
+- [Website design](https://melu.co.nz/websites): Small business websites designed, written and built, set up on Google (search optimisation, Search Console, Business Profile), with domain, hosting and email records, and updated after launch.
 - Marketing strategy: A plan for what to post, who it is for and where to spend. Described on the [homepage](https://melu.co.nz/#services).
 
 ## Who we work with
 
 - [Marketing for trades](https://melu.co.nz/marketing-for-trades): Short-form video, social media and local Meta ads for builders, electricians, plumbers, landscapers and other trade businesses, filmed on site.
+- [Marketing for hospitality](https://melu.co.nz/marketing-for-hospitality): Short-form video, social media and local Meta ads for restaurants, cafés, bars and takeaways, filmed at the venue.
+- [Marketing for car dealers](https://melu.co.nz/marketing-for-car-dealers): Vehicle videos, social media and local Meta ads for car dealers and car yards, filmed on the yard.
 
 ## Work
 
 - AJ Motors, Woolston, Christchurch: vehicle promo video.
+- FMJ Builders, Christchurch: deck and bathroom renovation promo.
 - La Ruby Thai, Christchurch: dish reel and cocktail menu reel.
 - Party Warehouse, Blenheim: brand promo reel.
 
