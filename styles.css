@@ -314,6 +314,11 @@ p { margin: 0; text-wrap: pretty; }
 .caps-wrap h2 { font-size: clamp(38px, 5vw, 68px); }
 .caps { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
 .caps li { padding: 20px 0; border-bottom: 1px solid var(--line); font-size: clamp(18px, 1.7vw, 23px); line-height: 1.3; }
+.steps { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); counter-reset: step; }
+.steps li { counter-increment: step; display: grid; grid-template-columns: 2.6em minmax(0, 1fr); column-gap: 14px; row-gap: 6px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.steps li::before { content: counter(step, decimal-leading-zero); grid-row: span 2; font-size: 14px; color: var(--muted); padding-top: 5px; font-variant-numeric: tabular-nums; }
+.steps h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; letter-spacing: -0.01em; font-size: clamp(18px, 1.7vw, 23px); line-height: 1.2; }
+.steps p { color: var(--ink-2); font-size: 15.5px; max-width: 52ch; }
 .cta-big { display: grid; gap: 30px; justify-items: center; text-align: center; padding-block: clamp(36px, 6vw, 90px); }
 .cta-big .display { font-size: clamp(44px, 9vw, 96px); }
 .cta-big p { color: var(--ink-2); max-width: 46ch; }
