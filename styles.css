@@ -305,6 +305,8 @@ p { margin: 0; text-wrap: pretty; }
 /* The row's basis covers its own two gaps, so all four videos come out the same height */
 .duo-row { display: flex; gap: var(--duo-gap); flex: 243 1 calc(var(--duo-gap) * 2); min-width: 0; align-items: flex-start; }
 .duo-row .reel-card.is-tall { flex: 1 1 0; }
+.duo-row.is-two { flex: 162 1 var(--duo-gap); }
+.duo + .duo, .solo-after { margin-top: clamp(28px, 4vw, 56px); }
 @media (max-width: 1100px) {
   .duo-four { flex-wrap: wrap; }
   .duo-four .reel-card.is-wide, .duo-four .duo-row { flex: 1 1 100%; }
@@ -480,6 +482,7 @@ footer .fine a { text-decoration: underline; text-underline-offset: 3px; padding
   }
   .duo-row::-webkit-scrollbar { display: none; }
   .duo .duo-row .reel-card.is-tall { flex: 0 0 44%; max-width: none; }
+  .duo-flip .reel-card.is-wide { order: -1; }
 }
 @media (max-width: 640px) {
   body { font-size: 16px; }
