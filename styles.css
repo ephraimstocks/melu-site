@@ -245,6 +245,53 @@ p { margin: 0; text-wrap: pretty; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; }
 .hero-note { font-size: 14px; color: var(--muted); }
 
+/* Homepage hero: full-screen client videos behind the headline, taking turns 01 / 02 */
+.hero-video { min-height: calc(100svh - var(--nav-h)); display: flex; align-items: flex-end; background: #0d0c0b; color: #fff; border-bottom: 0; }
+.hv-stage { position: absolute; inset: 0; overflow: hidden; }
+.hv-clip { position: absolute; inset: 0; opacity: 0; transition: opacity .8s ease; }
+.hv-clip.is-active { opacity: 1; }
+/* when a clip's shape doesn't match the screen, show it whole over a blurred copy of its poster */
+.hv-clip::before { content: ""; position: absolute; inset: -40px; background: var(--poster) center / cover no-repeat; filter: blur(28px) brightness(0.55); opacity: 0; }
+.hv-clip.fit::before { opacity: 1; }
+.hv-clip video { position: relative; width: 100%; height: 100%; object-fit: cover; display: block; }
+.hv-clip.fit video { object-fit: contain; }
+.hv-scrim { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, rgb(0 0 0 / 0.7) 0%, rgb(0 0 0 / 0.3) 50%, rgb(0 0 0 / 0.1) 80%), linear-gradient(to right, rgb(0 0 0 / 0.55), rgb(0 0 0 / 0.1) 70%); }
+.hero-video .wrap { padding-block: clamp(32px, 5vw, 64px); }
+.hero-video .hero-copy { gap: 22px; }
+.hero-video .hero-h { font-size: clamp(40px, 5.8vw, 84px); }
+.hv-inner { position: relative; width: 100%; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 32px 48px; }
+.hero-video .eyebrow, .hero-video .lede { color: rgb(255 255 255 / 0.88); }
+.hero-video .eyebrow::before { background: #fff; }
+.hero-video .display { color: #fff; }
+.hero-video .display em { color: rgb(255 255 255 / 0.12); -webkit-text-stroke-color: #fff; }
+.hero-video .btn-primary { background: #fff; color: var(--ink); border-color: #fff; }
+.hero-video .btn-primary:hover { background: rgb(255 255 255 / 0.86); border-color: rgb(255 255 255 / 0.86); }
+.hv-work { color: #fff; font-size: 15px; text-decoration: underline; text-underline-offset: 4px; padding-block: 12px; }
+.hv-nav { display: grid; gap: 14px; justify-items: end; min-width: 260px; text-shadow: 0 1px 8px rgb(0 0 0 / 0.6); }
+.hv-now { margin: 0; display: grid; justify-items: end; gap: 2px; text-align: right; }
+.hv-client { font-size: 15px; font-weight: 600; }
+.hv-note { font-size: 13px; color: rgb(255 255 255 / 0.75); }
+.hv-dots { list-style: none; margin: 0; padding: 0; display: flex; gap: 10px; }
+.hv-dot { display: grid; gap: 8px; width: 72px; padding: 8px 0; background: none; border: 0; color: rgb(255 255 255 / 0.6); font: inherit; font-size: 13px; letter-spacing: .08em; text-align: left; cursor: pointer; }
+.hv-dot[aria-current="true"], .hv-dot:hover { color: #fff; }
+.hv-dot .bar { display: block; height: 2px; background: rgb(255 255 255 / 0.3); overflow: hidden; }
+.hv-dot .bar i { display: block; height: 100%; background: #fff; transform-origin: left; transform: scaleX(0); }
+.hv-dot.done .bar i { transform: scaleX(1); }
+.hv-dot:focus-visible, .hv-pause:focus-visible, .hv-work:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.hv-pause { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; border: 1px solid rgb(255 255 255 / 0.5); background: rgb(0 0 0 / 0.25); color: #fff; cursor: pointer; }
+.hv-pause svg { width: 16px; height: 16px; }
+.hv-pause .i-play, .hero-video.paused .hv-pause .i-pause { display: none; }
+.hero-video.paused .hv-pause .i-play { display: block; }
+@media (max-width: 900px) {
+  .hv-inner { grid-template-columns: minmax(0, 1fr); }
+  .hv-nav { justify-items: start; min-width: 0; grid-template-columns: 1fr auto; grid-template-areas: "now pause" "dots dots"; align-items: center; width: 100%; }
+  .hv-now { grid-area: now; justify-items: start; text-align: left; }
+  .hv-pause { grid-area: pause; }
+  .hv-dots { grid-area: dots; width: 100%; }
+  .hv-dots li { flex: 1; }
+  .hv-dot { width: 100%; }
+}
+
 /* Rise-in on load */
 .rise { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
 .rise.d1 { animation-delay: .08s; }

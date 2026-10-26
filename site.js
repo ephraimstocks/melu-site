@@ -182,6 +182,82 @@
     reels.forEach(function (reel) { io.observe(reel); });
   }
 
+  // Homepage hero: client videos take turns, about nine seconds each. Only the
+  // current one downloads; the next starts loading halfway through. Reduced motion,
+  // data saver and slow connections get the posters until someone presses play.
+  var hero = document.querySelector('.hero-video');
+  if (hero) {
+    var SLOT = 9;
+    var clips = [].slice.call(hero.querySelectorAll('.hv-clip'));
+    var dots = [].slice.call(hero.querySelectorAll('.hv-dot'));
+    var pauseBtn = hero.querySelector('.hv-pause');
+    var nowClient = hero.querySelector('.hv-client');
+    var nowNote = hero.querySelector('.hv-note');
+    var phone = window.matchMedia('(max-width: 700px)').matches;
+    var current = 0;
+    var playing = autoplay;
+    var onScreen = true;
+    var vid = function (i) { return clips[i].querySelector('video'); };
+    var load = function (i) {
+      var v = vid(i);
+      if (v.getAttribute('src')) return;
+      v.setAttribute('src', (phone && v.getAttribute('data-small')) || v.getAttribute('data-src'));
+      v.preload = 'auto';
+    };
+    // Clips fill the screen. A vertical clip on a wide screen would be cropped and blurry,
+    // so it's shown whole over a blurred copy of its poster instead.
+    var fit = function () {
+      var wide = hero.clientWidth > hero.clientHeight;
+      clips.forEach(function (c) { c.classList.toggle('fit', wide && parseFloat(c.getAttribute('data-ratio')) < 1); });
+    };
+    var slot = function (v) { return Math.min(SLOT, v.duration || SLOT); };
+    var run = function () {
+      var v = vid(current);
+      if (playing && onScreen && !document.hidden) { load(current); v.play().catch(function () {}); }
+      else { v.pause(); }
+      hero.classList.toggle('paused', !playing);
+      pauseBtn.setAttribute('aria-label', playing ? 'Pause videos' : 'Play videos');
+    };
+    var show = function (i) {
+      vid(current).pause();
+      clips[current].classList.remove('is-active');
+      dots.forEach(function (d, j) {
+        if (j === i) { d.setAttribute('aria-current', 'true'); } else { d.removeAttribute('aria-current'); }
+        d.classList.toggle('done', j < i);
+        d.querySelector('i').style.transform = '';
+      });
+      current = i;
+      clips[i].classList.add('is-active');
+      nowClient.textContent = dots[i].getAttribute('data-client');
+      nowNote.textContent = dots[i].getAttribute('data-note');
+      var v = vid(i);
+      if (v.readyState > 0) v.currentTime = 0;
+      run();
+    };
+    clips.forEach(function (c, i) {
+      var v = vid(i);
+      v.addEventListener('timeupdate', function () {
+        if (i !== current) return;
+        var p = v.currentTime / slot(v);
+        dots[i].querySelector('i').style.transform = 'scaleX(' + Math.min(p, 1) + ')';
+        if (p > 0.5) load((i + 1) % clips.length);
+        if (p >= 1) show((i + 1) % clips.length);
+      });
+      v.addEventListener('ended', function () { if (i === current) show((i + 1) % clips.length); });
+    });
+    dots.forEach(function (d, i) {
+      d.addEventListener('click', function () { if (i !== current) show(i); });
+    });
+    pauseBtn.addEventListener('click', function () { playing = !playing; run(); });
+    document.addEventListener('visibilitychange', run);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) { onScreen = entries[0].isIntersecting; run(); }, { threshold: 0.25 }).observe(hero);
+    }
+    fit();
+    window.addEventListener('resize', fit);
+    run();
+  }
+
   // Hero glow: slow light drifting behind the page. Drawn at quarter resolution
   // (the gradients are soft, so it looks the same) and at about 30 frames a second.
   var canvas = document.getElementById('glow');
