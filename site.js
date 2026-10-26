@@ -207,7 +207,8 @@
     // Clips fill the screen. A vertical clip on a wide screen would be cropped and blurry,
     // so it's shown whole over a blurred copy of its poster instead.
     var fit = function () {
-      var wide = hero.clientWidth > hero.clientHeight;
+      var stage = hero.querySelector('.hv-stage');
+      var wide = stage.clientWidth > stage.clientHeight;
       clips.forEach(function (c) { c.classList.toggle('fit', wide && parseFloat(c.getAttribute('data-ratio')) < 1); });
     };
     var slot = function (v) { return Math.min(SLOT, v.duration || SLOT); };
