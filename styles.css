@@ -332,7 +332,7 @@ p { margin: 0; text-wrap: pretty; }
 .section-head h2 { font-size: clamp(38px, 5vw, 68px); }
 
 /* Services */
-.services { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid var(--line-strong); border-left: 1px solid var(--line); }
+.services { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line-strong); border-left: 1px solid var(--line); }
 .svc { padding: 36px 28px 44px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); display: grid; gap: 14px; align-content: start; transition: background .3s ease; }
 .svc:has(a):hover { background: var(--surface); }
 .svc h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; letter-spacing: -0.01em; font-size: 22px; line-height: 1.15; }
@@ -349,6 +349,7 @@ p { margin: 0; text-wrap: pretty; }
 .work-copy p { color: var(--ink-2); max-width: 40ch; }
 .work-copy .btn { justify-self: start; }
 .reels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2.4vw, 28px); margin-top: clamp(28px, 4vw, 52px); }
+.reels-four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .reel-card { display: grid; gap: 12px; margin: 0; align-content: start; }
 .reel { position: relative; aspect-ratio: 9 / 16; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
 .reel.wide { aspect-ratio: 16 / 9; }
@@ -528,15 +529,8 @@ footer .fine a { text-decoration: underline; text-underline-offset: 3px; padding
 .guide-list p { margin: 0; color: var(--ink-2); max-width: 68ch; }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 1279px) {
-  /* five cards: three across, then two wider ones */
-  .services { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-  .svc { grid-column: span 2; }
-  .svc:nth-child(n+4) { grid-column: span 3; }
-}
 @media (max-width: 1080px) {
   .services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .svc, .svc:nth-child(n+4) { grid-column: auto; }
   .svc:last-child:nth-child(odd) { grid-column: span 2; }
 }
 @media (max-width: 900px) {
